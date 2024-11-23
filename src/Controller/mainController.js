@@ -2,10 +2,12 @@ import { InputHandler } from '../View/inputView.js';
 
 export class MainController {
   constructor() {
-    this.input = new InputHandler() ;
+    this.input = new InputHandler();
   }
 
-  initializeProgram() {
-    const carNamesInput = this.input.getCarNamesInput()
+  async initializeProgram() {
+    const carNamesInput = await this.input.getCarNamesInput();
+
+    const racingCountInput = await this.input.getRacingCountInput();
   }
 }

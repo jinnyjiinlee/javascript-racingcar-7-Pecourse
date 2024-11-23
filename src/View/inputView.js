@@ -7,4 +7,12 @@ export class InputHandler {
 
     return carNamesInput;
   }
+
+  async getRacingCountInput() {
+    const racingCountInput = await Console.readLineAsync(
+      MESSAGES.RACING_COUNT_INPUT,
+    );
+
+    return racingCountInput;
+  }
 }
