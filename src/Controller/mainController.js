@@ -1,11 +1,14 @@
+import { InputHandler } from '../View/inputView.js';
+import { OutputHandler } from '../View/outputView.js';
+
 import { parseCarNames } from '../Model/carNamesParser.js';
 import { RaceMovementHandler } from '../Model/raceMovement.js';
 import { CarNamesExceptionalHandler } from '../Validation/carNamesValidator.js';
-import { InputHandler } from '../View/inputView.js';
 
 export class MainController {
   constructor() {
     this.input = new InputHandler();
+    this.output = new OutputHandler();
   }
 
   // eslint-disable-next-line max-lines-per-function
@@ -17,7 +20,6 @@ export class MainController {
     const racingCountInput = await this.input.getRacingCountInput();
 
     new RaceMovementHandler().getRaceMovement(parsedCarNames, racingCountInput);
-
-    // 각 자동차가 횟수 동안 전진
+    new OutputHandler().printResult();
   }
 }
