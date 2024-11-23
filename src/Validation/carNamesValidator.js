@@ -1,7 +1,8 @@
-import { ERROR_MESSAGES } from '../Constants/errorMesages.js';
+import { ERROR_MESSAGES } from '../Constants/errorMessages.js';
 
 export class CarNamesExceptionalHandler {
-  validateCarNames(parsedCarNames) {
+  validateCarNames(carNamesInput, parsedCarNames) {
+    this.carNamesInput = carNamesInput;
     this.parsedCarNames = parsedCarNames;
 
     this.checkValidationRules().forEach((element) => {
@@ -12,7 +13,19 @@ export class CarNamesExceptionalHandler {
   }
 
   checkValidationRules() {
-    return [[this.isLengthExceed(), ERROR_MESSAGES.CAR_NAMES.LENGTH_EXCEED]];
+    return [
+      [this.isNoInput(), ERROR_MESSAGES.COMMON.NO_INPUT],
+      [this.isNumeric(), ERROR_MESSAGES.CAR_NAMES.NUMERIC],
+      [this.isLengthExceed(), ERROR_MESSAGES.CAR_NAMES.LENGTH_EXCEED],
+    ];
+  }
+
+  isNoInput() {
+    return this.carNamesInput === '';
+  }
+
+  isNumeric() {
+    return this.parsedCarNames.some((carName) => !Number.isNaN(Number(carName)));
   }
 
   isLengthExceed() {

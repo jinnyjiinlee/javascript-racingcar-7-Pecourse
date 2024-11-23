@@ -25,7 +25,6 @@ export class RaceMovementHandler {
   }
 
   // TODO: 리펙토링
-  // eslint-disable-next-line max-lines-per-function
   MakeRandomNumberAndMovementForOnce() {
     for (let j = 0; j < this.parsedCarNames.length; j += 1) {
       const randomNumber = Random.pickNumberInRange(0, 9);

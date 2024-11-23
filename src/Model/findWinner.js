@@ -6,20 +6,15 @@ export class WinnerFinderHandler {
     this.parsedCarNames = parsedCarNames;
 
     this.findMaxNumber();
-
     this.winnerCarNames = [];
 
     this.findWinnerCarNames();
-
-    // console.log('this.winnerCarNames: ', this.winnerCarNames);
-
     this.printWinner();
   }
 
   findMaxNumber() {
     // 배열에서 가장 큰수 찾기
     this.MaxFinalRaceNumber = Math.max.apply(null, this.finalRaceStatus);
-    console.log('MaxFinalRaceNumber: ', this.MaxFinalRaceNumber);
   }
 
   findWinnerCarNames() {
