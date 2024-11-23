@@ -13,6 +13,8 @@ export class RaceMovementHandler {
     for (let i = 0; i < this.racingCount; i += 1) {
       this.MakeRandomNumberAndMovementForOnce();
     }
+
+    return this.racingMovement;
   }
 
   // TODO: 리펙토링

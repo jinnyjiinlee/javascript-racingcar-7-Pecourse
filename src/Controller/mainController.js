@@ -4,6 +4,8 @@ import { OutputHandler } from '../View/outputView.js';
 import { parseCarNames } from '../Model/carNamesParser.js';
 import { RaceMovementHandler } from '../Model/raceMovement.js';
 import { CarNamesExceptionalHandler } from '../Validation/carNamesValidator.js';
+import { WinnerFinderHandler } from '../Model/findWinner.js';
+
 
 export class MainController {
   constructor() {
@@ -19,7 +21,12 @@ export class MainController {
 
     const racingCountInput = await this.input.getRacingCountInput();
 
-    new RaceMovementHandler().getRaceMovement(parsedCarNames, racingCountInput);
+    const finalRaceStatus = new RaceMovementHandler().getRaceMovement(parsedCarNames, racingCountInput);
+    console.log('finalRaceStatus: ', finalRaceStatus)
+    
+    new WinnerFinderHandler().findWinner(parsedCarNames, finalRaceStatus);
+    
+    
     new OutputHandler().printResult();
   }
 }
